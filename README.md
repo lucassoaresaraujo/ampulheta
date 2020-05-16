@@ -1,5 +1,8 @@
 # Sistema Ampulheta
 
+[Demo video](https://youtu.be/R8T7Kv3XJro)
+[Activity Report](https://docs.google.com/spreadsheets/d/1B5P4sKqUMPL6WzmMax_URPJlJ9ULFA8_x6vxAYYQW9k/edit?usp=sharing)
+
 ## Requirements
 
 #### [Node](https://nodejs.org/en/download/)
