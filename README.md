@@ -40,7 +40,7 @@ yarn
 
 #### 3. Database creation
 
-No postgres, crie o banco de dados para aplicação
+In postgres, create the database for application
 
 #### 4. Dotenv configuration
 
