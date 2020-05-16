@@ -18,7 +18,7 @@ export class AuthService {
       where: { login },
     });
 
-    const isValidPassword = await user.validatePassword(password);
+    const isValidPassword = await user?.validatePassword(password);
 
     if (user && isValidPassword) {
       const tokenPayload: JwtPayload = { id: user.id };
