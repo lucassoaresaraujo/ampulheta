@@ -91,7 +91,11 @@ export class ProjectService {
 
       updatedProject = await project.update(projectData, { transaction });
 
-      await ProjectUsers.destroy({ where: { project_id: id }, transaction });
+      await ProjectUsers.destroy({
+        force: true,
+        where: { project_id: id },
+        transaction,
+      });
 
       await Promise.all(
         this.createPromisesInsertProjectUsers(

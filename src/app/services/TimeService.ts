@@ -6,7 +6,7 @@ import {
 import { Sequelize } from 'sequelize-typescript';
 import { Op } from 'sequelize';
 import { Transaction } from 'sequelize/types';
-import { isBefore, parseJSON } from 'date-fns';
+import { isBefore, isSameDay, parseJSON } from 'date-fns';
 
 import { Time } from '../models/Time';
 import { TimeDto } from '../dtos/TimeDto';
@@ -32,6 +32,10 @@ export class TimeService {
         throw new BadRequestException('The ended_at must be after started_at!');
       }
 
+      if (!isSameDay(parsedStartedAt, parsedEndedAt)) {
+        throw new BadRequestException('Both dates must be on the same day');
+      }
+
       // checks if time is already allocated
       const isTimeAlreadyAllocated = await Time.count({
         where: {
@@ -44,6 +48,14 @@ export class TimeService {
             ended_at: {
               [Op.gte]: newTime.started_at,
               [Op.lte]: newTime.ended_at,
+            },
+            [Op.and]: {
+              started_at: {
+                [Op.lte]: newTime.started_at,
+              },
+              ended_at: {
+                [Op.gte]: newTime.ended_at,
+              },
             },
           },
         },
