@@ -11,8 +11,10 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule);
 
-  const document = SwaggerModule.createDocument(app, swaggerOptions);
-  SwaggerModule.setup('api/v1/docs', app, document);
+  if (process.env.NODE_ENV === 'development') {
+    const document = SwaggerModule.createDocument(app, swaggerOptions);
+    SwaggerModule.setup('api/v1/docs', app, document);
+  }
 
   app.useGlobalPipes(new ValidationPipe());
 
