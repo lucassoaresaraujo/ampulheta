@@ -29,7 +29,7 @@
     "@nestjs/sequelize": "^0.1.0",
     "@nestjs/swagger": "^4.5.6",
     "bcryptjs": "^2.4.3",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "date-fns": "^2.13.0",
     "dotenv-flow": "^3.1.0",
